@@ -25,15 +25,17 @@ of all shapes and sizes. I've found it helpful in making website migrations, ope
 
 ## Usage
 
+<img src="https://github.com/e-dant/pm/blob/main/.internals/usage.png" alt="Usage" width="500" height="auto" />
+
 ```
-pm(usage|help[raw|pretty[full|key]=>pretty])
-pm(install|add(package(version=>latest)))
-pm(query|info(module(version=>latest)))
-pm(module(module,([help|usage]|[install|install]|describe|run)))
-pm(methods[raw|pretty=>pretty])
-pm(create(name,version)
-pm(manifest|scan)
-pm(list)
+pm usage|help [raw|pretty[full|key]]
+pm install|add <package name> [version]
+pm query|info <module name> [version]
+pm module <module name> <[help|usage]|[install|add]|describe|run>
+pm methods [raw|pretty]
+pm create <name> <version>
+pm manifest|scan
+pm list
 ```
 
 ## Installation
