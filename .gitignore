@@ -1,6 +1,7 @@
 # pm gitignore file
 .internals/
-!.internals/constitution.sh
+!./.internals/constitution.sh
+!./.internals/usage.png
 
 builds/*
 !builds
