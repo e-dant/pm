@@ -1,0 +1,19 @@
+# pm gitignore file
+.internals/
+!.internals/constitution.sh
+
+builds/*
+!builds
+
+configurations/*
+!configurations
+
+sources/*
+!sources
+
+stores/*
+!stores
+
+distributions/*
+!distributions
+
