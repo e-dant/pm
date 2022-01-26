@@ -1,20 +1,27 @@
 # pm gitignore file
-.internals/
+.internals/archived-distributions
+.internals/logs
+.internals/notes
 !./.internals/constitution.sh
 !./.internals/usage.png
 
 builds/*
 !builds
+!builds/.manifest
 
 configurations/*
 !configurations
+!configurations/.manifest
 
 sources/*
 !sources
+!sources/.manifest
 
 stores/*
 !stores
+!stores/.manifest
 
 distributions/*
 !distributions
+!distributions/.manifest
 
