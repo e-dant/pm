@@ -125,6 +125,9 @@ function pm::call::constitution() {
 function pm::call::module() {
 	## need to check this; sending empty strings as arguments works.
 	## checking if an empty string is "not" there... also works.
+	echo $@
+	echo $1
+	echo $2
 	if [ ! "$1" ]; then pm::io::red "fatal: improper command usage\n"; return 1; fi
 	case $# in
 		2)
@@ -137,6 +140,11 @@ function pm::call::module() {
 			local version="$2"
 			local arguments="$3"
 		;;
+		4)
+			local package_name="$1"
+			local version="$2"
+			local arguments="$3 $4"
+		;;
 		*)
 			pm::io::red "fatal: improper command usage\n"
 			pm::io::usage
@@ -144,14 +152,21 @@ function pm::call::module() {
 		;;
 	esac
 	local last_dir="$PWD"
-	if [ -d $PM_DISTRIBUTIONS_DIR/$package_name/$version ]; then
-		cd $PM_DISTRIBUTIONS_DIR/$package_name/$version
-		./module.sh "$arguments"
-	else
+	if ! cd "$PM_DISTRIBUTIONS_DIR/$package_name/$version" ; then
 		pm::io::red "fatal: package not found or not viable\n"
+		cd $last_dir
+		return 1
+	else
+		./module.sh "$arguments"
 	fi
 	cd $last_dir
 	return 0
+	#if [ -d "$PM_DISTRIBUTIONS_DIR/$package_name/$version" ]; then
+	#	cd "$PM_DISTRIBUTIONS_DIR/$package_name/$version"
+	#	./module.sh "$arguments"
+	#else
+	#	pm::io::red "fatal: package not found or not viable\n"
+	#fi
 }
 
 function pm::seq() {
@@ -258,8 +273,28 @@ function pm::parse_arguments() {
 			pm::package::list || return 1
 		;;## pm install -> install a given package
 		install|add)
-			pm::call::module "$2" "install" || return 1
+			local _begin_arg=2
+			local subargs=""
+			if [ $# -gt 3 ]; then
+				## make a string of all arguments from 2 to n
+				for (( i = $_begin_arg; i <= $#; i++ )); do
+					if [ $i -eq 3 ]; then
+						subargs+="default "
+					elif [ $i -eq 4 ]; then
+						subargs+="install "
+					else
+						subargs+="${@[$i]} "
+					fi
+				done
+			else
+				subargs="$2 default install"
+			fi
+			## and pass it to the function
+			pm::call::module "$subargs" || return 0
+			
+			#pm::call::module "$2" "default" "install" || return 1
 			#pm::package::install "$2" || return 1
+		
 		;;## pm create -> create a boilerplate package
 		create)
 			pm::package::create "$2" "$3" || return 1
@@ -271,7 +306,16 @@ function pm::parse_arguments() {
 			esac
 		;;## pm module <name> -> pass arguments along to the given module
 		module)
-			pm::call::module "$2" "$3" || return 1
+			## make a string of all arguments from 2 to n
+			local _begin_arg=2
+			local subargs=""
+			for (( i = $_begin_arg; i <= $#; i++ )); do
+				subargs+="${@[$i]} "
+			done
+			echo "$subargs"
+			pm::call::module "$subargs" || return 1	
+			#pm::call::module "$2" "$3" || return 1
+		
 		;;## pm query|info <module name> -> describe a module
 		query|info)
 			pm::call::module "$2" "describe" || return 1
