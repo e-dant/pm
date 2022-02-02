@@ -25,3 +25,7 @@ distributions/*
 !distributions
 !distributions/.manifest
 
+projects/*
+!projects
+!projects/.manifest
+
