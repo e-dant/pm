@@ -1,3 +1,7 @@
+# warning
+
+This is readme-driven development. The only thing that works right now are `distributions` -> `package-generic` packages.
+
 # pm
 
 `pm` is a hackable package manager for things that aren't packages. Namely: 
