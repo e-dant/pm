@@ -1,0 +1,24 @@
+----------------------------------------------------------------------------------
+|    Operating System   |     Associated Macro    |         Other Notes          |
+|-----------------------|-------------------------|------------------------------|
+| Windows 32 and 64 bit | _WIN32                  | All Windows OSes             |
+| Windows 64 bit        | _WIN64                  | 64 bit Windows only          |
+| Apple                 | __APPLE__               | All Apple OSes               |
+| Apple                 | __MACH__                | Alternative to __APPLE__     |
+| iOS (Embedded)        | TARGET_OS_EMBEDDED      | Include TargetConditionals.h |
+| iOS Simulator         | TARGET_IPHONE_SIMULATOR | Include TargetConditionals.h |
+| iPhone                | TARGET_OS_IPHONE        | Include TargetConditionals.h |
+| MacOS                 | TARGET_OS_MAC           | Include TargetConditionals.h |
+| Android               | __ANDROID__             | Subset of Linux              |
+| Android API           | __ANDROID_API__         | Android API level, ex: 32    |
+| Unix                  | __unix__                | [ No comments yet ]          |
+| Linux                 | __linux__               | All Linux Kernels            |
+| POSIX in Windows      | _POSIX_VERSION          | Windows with Cygwin          |
+| Solaris               | __sun                   | [ No comments yet ]          |
+| HP UX                 | __hpux                  | [ No comments yet ]          |
+| BSD                   | BSD                     | All BSD flavors              |
+| DragonFly BSD         | __DragonFly__           | [ No comments yet ]          |
+| FreeBSD               | __FreeBSD__             | [ No comments yet ]          |
+| NetBSD                | __NetBSD__              | [ No comments yet ]          |
+| OpenBSD               | __OpenBSD__             | [ No comments yet ]          |
+----------------------------------------------------------------------------------

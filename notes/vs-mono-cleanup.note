@@ -1,0 +1,3 @@
+  brew unlink {formula} && brew link {formula}
+
+and/or remove /private/etc/paths.d/mono-commands
