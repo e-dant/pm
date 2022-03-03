@@ -5,6 +5,10 @@
 !./.internals/constitution.sh
 !./.internals/usage.png
 
+notes/*
+!notes
+!notes/.manifest
+
 builds/*
 !builds
 !builds/.manifest

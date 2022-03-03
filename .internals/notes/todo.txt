@@ -1,0 +1,72 @@
+-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->
+apache installation:
+
+cd ~
+wget https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.gz
+tar xzvf httpd-2.4.52.tar.gz
+cd httpd-2.4.52
+./configure --with-mpm=worker --enable-so
+OR (if we have epoll)
+./configure --with-mpm=event --enable-so
+make
+make install
+# test the installation
+/usr/local/apache2/bin/apachectl start
+# stop apache, then install php
+/usr/local/apache2/bin/apachectl stop
+
+-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->
+php installation:
+
+cd ~
+wget https://www.php.net/distributions/php-8.1.1.tar.gz
+tar xzvf php-8.1.1.tar.gz
+# export CC=[wherever it ends up]
+# export CXX=[wherever it ends up]
+cd php-8.1.1
+if [ -f "/opt/homebrew/bin/apxs" ]; then
+	local apxs_location="/opt/homebrew/bin/apxs"
+elif [ -f "/usr/local/apache2/bin/apxs" ]; then
+	local apxs_location="/usr/local/apache2/bin/apxs"
+elif [ -f "/usr/local/httpd/bin/apxs" ]; then
+	local apxs_location="/usr/local/httpd/bin/apxs"
+else
+	return 1
+fi
+./configure --prefix=/usr/local --with-apxs2=$apxs_location --enable-address-sanitizer --enable-undefined-sanitizer --enable-sockets --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-bcmath --enable-calendar --enable-zts --with-curl --with-openssl --with-zlib --with-zip --with-sodium --with-password-argon2 
+
+# important configuration, modules, and environment variables:
+#   our shiny new gcc 11.2
+# export CC=[wherever it ends up]
+# export CXX=[wherever it ends up]
+#   where are we/where is apache:
+# --prefix=/usr/local --with-apxs2=/usr/local/apache2/bin/apxs
+#   sane build & runtime:
+# --enable-address-sanitizer --enable-undefined-sanitizer
+#   thread safety:
+# --enable-zts
+
+# configuration:
+# --enable-fast-install=no # better runtime (I hope) preferred to quicker installation
+# --enable-shared=yes --enable-static=yes # just explicit and pedantic
+# --enable-sockets --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-bcmath --enable-calendar
+
+# modules:
+# --with-openssl --with-zlib --with-zip --with-curl --with-sodium --with-password-argon2 
+
+# optional (not done here, but might be good for later on):
+#   postgres support:
+# --with-pgsql=/usr/local/pgsql
+# --with-pdo-pgsql[optional: PostgreSQL base install directory or the path to pg_config]
+
+
+make
+make install
+cp php.ini-development /usr/local/lib/php.ini
+
+-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->
+httpd.conf:
+LoadModule php_module modules/libphp.so
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
