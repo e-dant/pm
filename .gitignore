@@ -9,6 +9,10 @@ notes/*
 !notes
 !notes/.manifest
 
+os/*
+!os
+!os/.manifest
+
 builds/*
 !builds
 !builds/.manifest
