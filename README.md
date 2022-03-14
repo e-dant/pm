@@ -9,7 +9,7 @@
 
 ## Rationale
 
-`pm` is meant to be unobtrusive and simple. It is, ultimately, just a collection of scripts created for the purpose of organizing my own projects. It became obtrusive organizing, updating, and remembering how to build projects. This is a solution for that in the form of an organization and build utility; a front-end, of limited sorts, to packaged code.
+`pm` is meant to be unobtrusive and simple. It is, ultimately, created for the purpose of analyzing and organizing our internal projects. It became obtrusive organizing, updating, and remembering how to build projects. This is a solution for that in the form of an organization and build utility; a front-end, of sorts, to packaged code.
 
 There are five broad categories of code with which I have found `pm` useful:
 
