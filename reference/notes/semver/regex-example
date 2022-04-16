@@ -1,0 +1,17 @@
+# Semantic versioning regex
+
+## simple:
+```
+^([0-9]+)\.([0-9]+)\.([0-9]+)
+```
+
+## correct:
+```
+^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?$
+```
+
+## reference:
+
+- https://gist.github.com/rverst/1f0b97da3cbeb7d93f4986df6e8e5695
+- https://gist.github.com/jhorsman/62eeea161a13b80e39f5249281e17c39
+

@@ -1,0 +1,22 @@
+// mild: active highlights and text
+$_light-1:				#bfe1cb;
+$_light-2:				#a7cdb4;
+$_light-3:				#94c0a3;
+$_light-healthy-1: 		#dfda8c;
+$_light-healthy-2: 		#b49c4e;
+$_light-green:			#88be9a;
+$_light-purple:			#a69ea9;
+$_light-blue: 			#2f7685;
+
+// mild: midtones
+$_mild-purple-1:		#6b5572;
+$_mild-purple-2:		#453b4c;
+$_mild-steel:			#3e3f48;
+$_mild-grey-green-1:	#3c443e;
+$_mild-grey-green-2:	#556057;
+
+// dark: background
+$_dark-purple:			#1c191d;
+$_dark-grey-1:			#111011;
+$_dark-grey-2:			#191819;
+$_dark-green:			#1d2620;

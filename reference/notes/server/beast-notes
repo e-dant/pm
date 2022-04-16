@@ -1,0 +1,21 @@
+  /** @var ioc
+   * make this a private variable of server
+   * or otherwise limit its scope.
+   * these are only necessary for the `serve`
+   * function's loop.
+   *
+   * Maybe make them static inside the `serve` fn
+   */
+  /** @var acceptor
+   * make this a private variable of server
+   * or otherwise limit its scope.
+   * these are only necessary for the `serve`
+   * function's loop.
+   *
+   * Maybe make them static inside the `serve` fn
+   */
+  /** @function serve
+   * one thread for each session:
+   * creates a thread and a socket, transfers ownership
+   * of the socket to the thread, and detaches the thread.
+   */
