@@ -1,0 +1,1 @@
+cat /proc/cpuinfo | sed -n 's/.*Serial.*: .\{10\}\(.*\)/\1/p' | shasum -a 1 -U | sed -n 's/\ U-//p'
