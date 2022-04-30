@@ -9,6 +9,10 @@ notes/*
 !notes
 !notes/.manifest
 
+private/*
+!private
+!private/.manifest
+
 os/*
 !os
 !os/.manifest
