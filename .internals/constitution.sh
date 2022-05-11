@@ -1,7 +1,11 @@
 #!/bin/bash
 
 ## core definitions
-export PM_ROOT_DIR="$HOME/packages"
+if [ -z "$PM_PREFIX" ]; then
+  export PM_ROOT_DIR="$(dirname "$0")"
+else
+  export PM_ROOT_DIR="$PM_PREFIX"
+fi
 export PM_CONSTITUTION_LOC="$PM_ROOT_DIR/.internals/constitution.sh"
 export PM_DISTRIBUTIONS_DIR="$PM_ROOT_DIR/distributions"
 export PM_CONFIGURATIONS_DIR="$PM_ROOT_DIR/configuration"
