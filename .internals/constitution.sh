@@ -2,9 +2,9 @@
 
 ## core definitions
 if [ -z "$PM_ROOT_DIR" ]; then
-    if [ -d "$HOME/packages"]; then
+    if [ -d "$HOME/packages" ]; then
         export PM_ROOT_DIR="$HOME/packages"
-    elif [ -d "$HOME/pm"]; then
+    elif [ -d "$HOME/pm" ]; then
         export PM_ROOT_DIR="$HOME/pm"
     else
         echo "export PM_ROOT_DIR in your shell profile"
